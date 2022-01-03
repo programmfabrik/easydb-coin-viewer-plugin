@@ -1,0 +1,1 @@
+# EasyDB5 Plugin - WebGL Coin Viewer
