@@ -1,0 +1,10 @@
+plugin:
+  name: easydb-coin-viewer-plugin
+  version: 1.0
+  server:
+    api-version:
+      require: 1
+  webfrontend:
+    url: easydb-coin-viewer-plugin.js
+    css: easydb-coin-viewer-plugin.css
+    l10n: l10n/
