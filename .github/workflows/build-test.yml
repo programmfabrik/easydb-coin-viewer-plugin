@@ -14,5 +14,10 @@ jobs:
           token: ${{ secrets.FYLR_BOT_PERSONAL_ACCESS_TOKEN }}
           submodules: true
 
+      - name: Install dependencies
+        run: |
+          apt-get install -y curl python2 rsync make git
+          npm install -g coffeescript@1 sass
+
       - name: Build plugin
         run: make
