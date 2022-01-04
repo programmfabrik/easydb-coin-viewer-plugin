@@ -16,8 +16,8 @@ jobs:
 
       - name: Install dependencies
         run: |
-          apt-get install -y curl python2 rsync make git
-          npm install -g coffeescript@1 sass
+          sudo apt-get install -y curl python2 rsync make git
+          sudo npm install -g coffeescript@1 sass
 
       - name: Build plugin
         run: make
