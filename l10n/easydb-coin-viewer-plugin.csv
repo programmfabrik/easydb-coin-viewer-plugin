@@ -1,5 +1,5 @@
 key,de-DE,en-US,it-IT,es-ES
-coin.viewer.main.button|icon,Open coin viewer,Open coin viewer,Open coin viewer,Open coin viewer
-coin.viewer.main.button|tooltip,fa-circle-thin,fa-circle-thin,fa-circle-thin,fa-circle-thin
+coin.viewer.main.button|tooltip,Open coin viewer,Open coin viewer,Open coin viewer,Open coin viewer
+coin.viewer.main.button|icon,fa-object-group,fa-object-group,fa-object-group,fa-object-group
 coin.viewer.main.error.json_wrong_data|text,The provided JSON file does not have the expected format.,The provided JSON file does not have the expected format.,The provided JSON file does not have the expected format.,The provided JSON file does not have the expected format.
 coin.viewer.main.error.json_wrong_data|icon,fa-warning,fa-warning,fa-warning,fa-warning
