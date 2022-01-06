@@ -21,6 +21,7 @@ class ez5.CoinViewerDetailPlugin extends DetailSidebarPlugin
 		return false
 
 	showDetail: ->
+		CUI.dom.empty(@__mainDiv)
 		waitBlock = new CUI.WaitBlock
 			element: @__mainDiv
 		waitBlock.show()
