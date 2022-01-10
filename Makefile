@@ -17,12 +17,16 @@ INSTALL_FILES = \
 	manifest.yml
 
 SCSS_FILES = src/webfrontend/scss/easydb-coin-viewer-plugin.scss
-COFFEE_FILES = src/webfrontend/CoinViewerDetailPlugin.coffee \
-	src/lib/coin.js
+COFFEE_FILES = src/webfrontend/CoinViewerDetailPlugin.coffee
+COIN_LIB_FILE = src/lib/coin.js
 
 all: build
 
 include $(EASYDB_LIB)/tools/base-plugins.make
+
+${JS}: $(subst .coffee,.coffee.js,${COFFEE_FILES}) ${COIN_LIB_FILE}
+	mkdir -p $(dir $@)
+	cat $^ > $@
 
 build: code $(L10N) buildinfojson
 
