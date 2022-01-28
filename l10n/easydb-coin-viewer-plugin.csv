@@ -3,3 +3,6 @@ coin.viewer.main.button|tooltip,Open coin viewer,Open coin viewer,Open coin view
 coin.viewer.main.button|icon,fa-object-group,fa-object-group,fa-object-group,fa-object-group
 coin.viewer.main.error.json_wrong_data|text,The provided JSON file does not have the expected format.,The provided JSON file does not have the expected format.,The provided JSON file does not have the expected format.,The provided JSON file does not have the expected format.
 coin.viewer.main.error.json_wrong_data|icon,fa-warning,fa-warning,fa-warning,fa-warning
+coin.viewer.buttonbar.fullscreen.button.open|icon,fa-arrows-alt,fa-arrows-alt,fa-arrows-alt,fa-arrows-alt
+coin.viewer.buttonbar.fullscreen.button.close|icon,fa-compress,fa-compress,fa-compress,fa-compress
+coin.viewer.buttonbar.fullscreen.button|tooltip,Vollbildschirm öffnen/schließen,Open/Close fullscreen,,

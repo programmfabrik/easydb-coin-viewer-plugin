@@ -73,6 +73,10 @@ class ez5.CoinViewerDetailPlugin extends DetailSidebarPlugin
 				CUI.dom.replace(@__mainDiv, wrongJsonLabel)
 				return
 
+			pane = new CUI.SimplePane
+				class: "ez5-coin-viewer-pane"
+				content: [@__buttonBar, @__mainDiv]
+			@_detailSidebar.mainPane.replace(pane, @getPane())
 			@__openCoinViewer(validJsonFilesFound)
 			waitBlock.hide()
 		)
@@ -81,6 +85,17 @@ class ez5.CoinViewerDetailPlugin extends DetailSidebarPlugin
 
 	renderObject: ->
 		@__mainDiv = CUI.dom.div("ez5-coin-viewer-container")
+
+		fullscreenButton = CUI.Pane.getToggleFillScreenButton(
+			icon_inactive: new CUI.Icon(icon: $$("coin.viewer.buttonbar.fullscreen.button.open|icon"))
+			icon_active: new CUI.Icon(icon: $$("coin.viewer.buttonbar.fullscreen.button.close|icon"))
+			tooltip: text: $$("coin.viewer.buttonbar.fullscreen.button|tooltip")
+		)
+
+		@__buttonBar = new CUI.Buttonbar
+			class: "ez5-coin-viewer-buttonbar"
+			buttons: [fullscreenButton]
+
 		return
 
 	__openCoinViewer: (jsonFiles) ->

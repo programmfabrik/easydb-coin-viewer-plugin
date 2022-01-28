@@ -2,3 +2,22 @@
   display: flex;
   height: 100%;
 }
+
+.ez5-coin-viewer-pane {
+  .cui-vertical-layout-center {
+    overflow: hidden!important;
+  }
+}
+
+.ez5-coin-viewer-buttonbar {
+  position: absolute;
+  width: 100%;
+  z-index: 1000;
+  display: block;
+  margin-top: 10px;
+
+  .cui-button {
+    position: absolute;
+    right: 10px;
+  }
+}
