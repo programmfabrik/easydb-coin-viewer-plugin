@@ -14,7 +14,7 @@ class ez5.CoinViewerDetailPlugin extends DetailSidebarPlugin
 	isAvailable: ->
 		assets = @_detailSidebar.object.getAssetsForBrowser(["detail", "standard"])
 		return assets.some((asset) =>
-			asset.value.extension == ez5.CoinViewerDetailPlugin.JSON_EXTENSION and Asset.getDownloadVersions(asset.value).length > 0
+			asset.value.extension == ez5.CoinViewerDetailPlugin.JSON_EXTENSION
 		)
 
 	isDisabled: ->
@@ -43,9 +43,8 @@ class ez5.CoinViewerDetailPlugin extends DetailSidebarPlugin
 			if asset.value.extension != ez5.CoinViewerDetailPlugin.JSON_EXTENSION
 				continue
 
-			downloadVersions = Asset.getDownloadVersions(asset.value)
-			for downloadVersion in downloadVersions
-				downloadUrl = downloadVersion.url or downloadVersion.download_url
+			for _, _version of asset.value.versions or []
+				downloadUrl = _version.url or _version.download_url
 				if downloadUrl
 					break
 
