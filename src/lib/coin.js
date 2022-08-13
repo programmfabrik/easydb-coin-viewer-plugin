@@ -2743,7 +2743,7 @@ ez5.CoinLib = function() {
 		resizeFunction = function() {
 			requestAnimationFrame(() => { visWidget.render() });
 		};
-		mainContainer.addEventListener('resize', resizeFunction)
+		window.addEventListener('mousemove', resizeFunction)
 		canvasLeft.addEventListener('contextmenu', function(e)  //don't open menu with mouse right click
 		{
 			e.preventDefault();
