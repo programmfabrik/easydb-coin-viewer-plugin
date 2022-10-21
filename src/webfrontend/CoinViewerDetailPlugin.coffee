@@ -32,6 +32,8 @@ class ez5.CoinViewerDetailPlugin extends DetailSidebarPlugin
 		headers = {}
 		if ez5.version("6.1")
 			headers["Authorization"] = "Bearer " + serverToken
+			# Work around Safari where HTTP Auth overwrites the Authorization Header
+			@__headers["X-Fylr-Authorization"] = "Bearer "+serverToken
 		else
 			headers["X-Easydb-Token"] = serverToken
 
