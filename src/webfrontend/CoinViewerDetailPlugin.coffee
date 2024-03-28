@@ -30,11 +30,7 @@ class ez5.CoinViewerDetailPlugin extends DetailSidebarPlugin
 		# We need to add the token so we can download the json files.
 		serverToken = ez5.session.token
 		headers = {}
-		if ez5.version("6.1")
-			headers["Authorization"] = "Bearer " + serverToken
-			# Work around Safari where HTTP Auth overwrites the Authorization Header
-			@__headers["X-Fylr-Authorization"] = "Bearer "+serverToken
-		else
+		if not ez5.version("6")
 			headers["X-Easydb-Token"] = serverToken
 
 		validJsonFilesFound = []
