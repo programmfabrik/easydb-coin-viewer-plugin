@@ -138,10 +138,6 @@ class ez5.CoinViewerDetailPlugin extends DetailSidebarPlugin
 		if not CUI.util.isPlainObject(jsonData.processData)
 			return false
 
-		for _, value of jsonData.processData
-			if not CUI.util.isPlainObject(value)
-				return false
-
 			if not value.albedo or not value.normal
 				return false
 
