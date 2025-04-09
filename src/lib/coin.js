@@ -458,7 +458,7 @@ ez5.CoinLib = function() {
 		  border: 0px solid rgba(0,0,0,.8);\n\
 		  border-radius: 2px;\n\
 		  background-color: rgba(190,190,190,.0);\n\
-		  color: #222;\n\
+		  color: #ffffff;\n\
 		  font-size:12px;\n\
 		  font-weight: normal;\
 		  position: absolute;\n\
@@ -601,8 +601,8 @@ ez5.CoinLib = function() {
 	  else
 		for (let i = 0; i < this.icons.length; ++i)
 		{
-		  this.icons[i].x = 20 + i * (icons[i].imgActive.width * 1.25);
-		  this.icons[i].y = 20;
+		  this.icons[i].x = embeddedSettings["IconButtonGap"] + i * (icons[i].imgActive.width + embeddedSettings["IconButtonGap"]);
+		  this.icons[i].y = embeddedSettings["IconButtonGap"];
 		}
 	  //Update bounding box:
 	  this.iconsBoundingBox = [9999, 0, 9999, 0];
@@ -2011,18 +2011,19 @@ ez5.CoinLib = function() {
 		{
 		  "Background": [0, 0, 0],
 		  "Button": [255, 87, 36],
-		  "TooltipText": [2, 2, 2],
+		  "TooltipText": [255, 255, 255],
 		  "ScaleGrid": [0, 74, 149]
 		},
 		"Dark":
 		{
 		  "Background": [0, 0, 0],
 		  "Button": [255, 87, 36],
-		  "TooltipText": [2, 2, 2],
+		  "TooltipText": [255, 255, 255],
 		  "ScaleGrid": [0, 74, 149]
 		}
 	  },
 	  "IconButtonScale": 0.400000,
+	  "IconButtonGap": 20,
 	  "EnableObjectColorModification": false
 	}
 	var visWidget;
@@ -2454,16 +2455,12 @@ ez5.CoinLib = function() {
 		  if(nIcons > 0 && toolTipText.length > 0 && ev.pointerType && ev.pointerType == "mouse")
 		  {
 			const canvasRect = visWidget.glContext.canvas.getBoundingClientRect();
+			console.log('canvasRect:', canvasRect)
 			tooltip.textContent = toolTipText;
 			tooltip.style.visibility = 'visible';
-			let x = 0, y = 0;
-			for(let i = 0; i < nIcons; ++i)
-			{
-			  x = Math.max(x, visWidget.iconRenderer.iconScale * (visWidget.iconRenderer.icons[i].x + visWidget.iconRenderer.icons[i].w));
-			  y = Math.max(y, visWidget.iconRenderer.iconScale * visWidget.iconRenderer.icons[i].y);
-			}
-			tooltip.style.left = "" + (canvasRect.left + x + 10) + "px";
-			tooltip.style.top = "" + (canvasRect.top + visWidget.glContext.canvas.height - 34 - 36 * visWidget.iconRenderer.iconScale) + "px";
+			const iconWidth = visWidget.iconRenderer.iconScale * (visWidget.iconRenderer.icons[0].w + embeddedSettings["IconButtonGap"]);
+			x = (nIcons * iconWidth) + embeddedSettings["IconButtonGap"];
+			tooltip.style.left = "" + x + "px";
 			tooltip.style.width = "" + (visWidget.glContext.canvas.width - (x + 10) - 30) + "px"; //adapt width to enable clipping inside canvas
 		  }
 		  else

@@ -1,6 +1,12 @@
 .ez5-coin-viewer-container {
+  position: relative;
   display: flex;
   height: 100%;
+
+  .Div-Dig-Obj-Icon-Tooltip {
+    position: absolute;
+    bottom: 0.4rem;
+  }
 }
 
 .ez5-coin-viewer-pane {
