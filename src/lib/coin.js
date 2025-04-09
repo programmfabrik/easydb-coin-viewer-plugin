@@ -454,14 +454,13 @@ ez5.CoinLib = function() {
 		}\n\
 		.Div-Dig-Obj-Icon-Tooltip\n\
 		{\n\
-		  margin: 8px;\n\
-		  padding: 8px;\n\
+		  padding: 4px;\n\
 		  border: 0px solid rgba(0,0,0,.8);\n\
-		  border-radius: 3px;\n\
+		  border-radius: 2px;\n\
 		  background-color: rgba(190,190,190,.0);\n\
 		  color: #222;\n\
-		  font-size:24px;\n\
-		  font-weight: bold;\
+		  font-size:12px;\n\
+		  font-weight: normal;\
 		  position: absolute;\n\
 		  z-index: 2;\n\
 		  text-align: left;\n\
@@ -513,7 +512,7 @@ ez5.CoinLib = function() {
 	  //Init var(s):
 	  this.icons = [];
 	  this.iconsBoundingBox = [0, 0, 0, 0];  //[MinX, MaxX, MinY, MaxY]
-	  this.colorButton = [2, 149, 255];
+	  this.colorButton = [255, 87, 36]; // 255 87 36
 	  let VSProgramText = `
 	  attribute vec2 inVertexPos;
 	  attribute vec2 inTexCoord0;
@@ -602,8 +601,8 @@ ez5.CoinLib = function() {
 	  else
 		for (let i = 0; i < this.icons.length; ++i)
 		{
-		  this.icons[i].x = 10 + i * (icons[i].imgActive.width * 1.25);
-		  this.icons[i].y = 10;
+		  this.icons[i].x = 20 + i * (icons[i].imgActive.width * 1.25);
+		  this.icons[i].y = 20;
 		}
 	  //Update bounding box:
 	  this.iconsBoundingBox = [9999, 0, 9999, 0];
@@ -2005,20 +2004,20 @@ ez5.CoinLib = function() {
 	  {
 		"Light":
 		{
-		  "Background": [255, 255, 255],
-		  "Button": [2, 149, 255],
+		  "Background": [0, 0, 0],
+		  "Button": [255, 87, 36],
 		  "TooltipText": [2, 2, 2],
 		  "ScaleGrid": [0, 74, 149]
 		},
 		"Dark":
 		{
-		  "Background": [255, 255, 255],
-		  "Button": [2, 149, 255],
+		  "Background": [0, 0, 0],
+		  "Button": [255, 87, 36],
 		  "TooltipText": [2, 2, 2],
 		  "ScaleGrid": [0, 74, 149]
 		}
 	  },
-	  "IconButtonScale": 0.500000,
+	  "IconButtonScale": 0.400000,
 	  "EnableObjectColorModification": false
 	}
 	var visWidget;
@@ -2632,7 +2631,7 @@ ez5.CoinLib = function() {
 	  let setTheme = function(theme)
 	  {
 		let colorBackground = theme == "dark"? [32, 32, 32]: [255, 255, 255];     //Default RGB-Settings
-		let colorButton = theme == "dark"? [2, 149, 255]: [2, 149, 255];
+		let colorButton = theme == "dark"? [255, 87, 36]: [255, 87, 36]; // rgb(255 87 36)
 		let colorTooltipText = theme == "dark"? [187, 187, 187]: [2, 2, 2];
 		let colorScaleGrid = [0, 74, 149];
 		if (typeof embeddedSettings !== "undefined")

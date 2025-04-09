@@ -5,7 +5,30 @@
 
 .ez5-coin-viewer-pane {
   .cui-vertical-layout-center {
+    padding: 0;
     overflow: hidden!important;
+  }
+
+  .cui-buttonbar {
+    .cui-button {
+      --btn-color: white;
+      --btn-border-color: white;
+      --btn-color-hover: rgb(255 255 255 / 0.65);
+      --btn-background-hover: transparent;
+  
+      &:not(.cui-disabled) {
+        &:hover {
+          --btn-border-color: rgb(255 255 255 / 0.65);
+        }
+      }    
+      .cui-button-visual {
+        height: 24px;
+        min-width: 25.62px;
+        font-size: 0.75rem;
+        line-height: 24px;
+        border-radius: 2px;
+      }    
+    }
   }
 }
 
@@ -14,10 +37,10 @@
   width: 100%;
   z-index: 1000;
   display: block;
-  margin-top: 10px;
+  margin-top: 0.5rem;
 
   .cui-button {
     position: absolute;
-    right: 10px;
+    right: 0.5rem;
   }
 }
