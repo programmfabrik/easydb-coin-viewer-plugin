@@ -112,6 +112,18 @@ class ez5.CoinViewerDetailPlugin extends DetailSidebarPlugin
 			IconFlip: "fa-exchange"
 		}
 
+		tooltipLookupTable = { 
+			IconResetView: "Reset view, light direction an object color.",
+			IconZoomOut: "Zoom out.",
+			IconZoomIn: "Zoom in.",
+			IconRotateLeft: "Counter-clockwise object rotation.",
+			IconRotateRight: "Clockwise object rotation.",
+			IconMoveObjectOrLight: "Toggle manipulation of light or object position.",
+			IconSelectColor: "Choose custom color for the object.",
+			IconRule: "Toggle visualization of scale.",
+			IconFlip: "Show other object side."
+		}		
+
 		buttons = []
 
 		for k, v of iconLookupTable
@@ -120,6 +132,7 @@ class ez5.CoinViewerDetailPlugin extends DetailSidebarPlugin
 				icon_inactive: if CUI.util.isArray(v) then v[0] else v
 				icon_active: if CUI.util.isArray(v) then v[1] else v
 				hidden: true
+				tooltip: text: tooltipLookupTable[k]
 			CUI.dom.setAttribute(button, "data-action", k)
 			buttons.push(button)
 
