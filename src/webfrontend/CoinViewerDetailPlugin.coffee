@@ -72,7 +72,7 @@ class ez5.CoinViewerDetailPlugin extends DetailSidebarPlugin
 
 			pane = new CUI.SimplePane
 				class: "ez5-coin-viewer-pane"
-				content: [@__buttonBar, @__mainDiv]
+				content: [@__buttonBar, @__mainDiv, @__buttonBarInteraction]
 			@_detailSidebar.mainPane.replace(pane, @getPane())
 			@__openCoinViewer(validJsonFilesFound)
 			waitBlock.hide()
@@ -91,13 +91,44 @@ class ez5.CoinViewerDetailPlugin extends DetailSidebarPlugin
 
 		@__buttonBar = new CUI.Buttonbar
 			class: "ez5-coin-viewer-buttonbar"
-			buttons: [fullscreenButton]
+			buttons: [fullscreenButton]		
+
+		@__buttonBarInteraction = new CUI.Buttonbar
+			class: "ez5-coin-viewer-interaction-buttonbar"			
+			buttons: @__getInteractionButtons()
 
 		return
 
+	__getInteractionButtons: ->	
+		iconLookupTable = { 
+			IconResetView: "fa-undo",
+			IconZoomOut: "fa-search-minus",
+			IconZoomIn: "fa-search-plus",
+			IconRotateLeft: "fa-rotate-left",
+			IconRotateRight: "fa-rotate-right",
+			IconMoveObjectOrLight: ["fa-sun-o", "fa-arrows"],
+			IconSelectColor: "fa-tint",
+			IconRule: "ruler",
+			IconFlip: "fa-exchange"
+		}
+
+		buttons = []
+
+		for k, v of iconLookupTable
+			button = new CUI.Button
+				class: "ez5-coin-viewer-button"
+				icon_inactive: if CUI.util.isArray(v) then v[0] else v
+				icon_active: if CUI.util.isArray(v) then v[1] else v
+				hidden: true
+			CUI.dom.setAttribute(button, "data-action", k)
+			buttons.push(button)
+
+		return buttons
+
 	__openCoinViewer: (jsonFiles) ->
 		coinData = jsonFiles[0] # For now we use the first one found.
-		ez5.CoinLib.init(@__mainDiv)
+		useFylrButtons = true
+		ez5.CoinLib.init(@__mainDiv, useFylrButtons)
 		ez5.CoinLib.show(coinData)
 		return
 

@@ -1729,6 +1729,9 @@ ez5.CoinLib = function() {
 		if(enableFlip)
 		  this.iconImages.push({ id: "IconFlip", rawDataActive: iconDataFlip, rawDataInactive: iconDataFlip, imageAct: null, imageInact: null, animateClicked: true });
 		let iconImages = this.iconImages;
+		
+		ez5.CoinLib.icons = this.iconImages;
+
 		let icons = [iconImages.length];  //Stores list of {ID, Icon image data}
 		let nIconsLoaded = 0; //Track number of loaded icons (images are loaded asynchronously and do not finish in subsequent order)
 		let iconRenderer = this.iconRenderer;
@@ -1978,8 +1981,10 @@ ez5.CoinLib = function() {
 		let scale = Math.sqrt(this.transformation[0] * this.transformation[0] + this.transformation[1] * this.transformation[1]);
 		this.gridRenderer.process(gl.canvas.width, gl.canvas.height, this.pixelToMillimeter, scale);
 	  }
-	  //Render icons of the UI:
-	  this.iconRenderer.render();
+	  	//Render icons of the UI:
+		if (!ez5.CoinLib.useFylrButtons) {
+			this.iconRenderer.render();
+		}
 	};
 
 	//Function updates VBO with geometry for a quad:
@@ -2725,7 +2730,8 @@ ez5.CoinLib = function() {
 	var resizeFunction;
 
 	/* Copy of ViewerMain but removing the not necessary stuff by the plugin. */
-	function init(container) {
+	function init(container, useFylrButtons) {
+		ez5.CoinLib.useFylrButtons = useFylrButtons;
 		mainContainer = container;
 		//Insert html and css code:
 		let htmlGenerator = new HtmlGenerator();
@@ -2752,11 +2758,37 @@ ez5.CoinLib = function() {
 	function show(newCoinData) {
 		coinData = newCoinData
 		loadDataset(null, null);
+		
+		if(ez5.CoinLib.useFylrButtons) {
+			const interactionButtonbarEl = document.querySelector('.ez5-coin-viewer-interaction-buttonbar');
+			
+			if (interactionButtonbarEl) {						
+				ez5.CoinLib.icons.forEach(icon => {
+					const button = document.querySelector('.ez5-coin-viewer-button[data-action="'+ icon.id +'"]');
+	
+					if(button) {
+						button.removeAttribute('hidden');
+						button.classList.remove('cui-button-hidden');
+						button.addEventListener('click', (event) => {
+							const actionId = event.currentTarget.getAttribute('data-action');
+							onIconClick(actionId);
+
+							if (actionId == "IconMoveObjectOrLight") {
+								// todo: activate button / show active icon...
+							}
+						});
+					}
+				});
+	
+				interactionButtonbarEl.removeAttribute('hidden');
+			}		
+		}
 	}
 
 	return {
+		icons: [],
 		init: init,
-		show: show
+		show: show,
 	};
 
 }();
