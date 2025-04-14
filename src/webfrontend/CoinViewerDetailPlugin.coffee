@@ -140,7 +140,7 @@ class ez5.CoinViewerDetailPlugin extends DetailSidebarPlugin
 
 	__openCoinViewer: (jsonFiles) ->
 		coinData = jsonFiles[0] # For now we use the first one found.
-		useFylrButtons = true
+		useFylrButtons = true # if set to true it will override the default webGL buttons with Fylr styled HTML buttons
 		ez5.CoinLib.init(@__mainDiv, useFylrButtons)
 		ez5.CoinLib.show(coinData)
 		return
