@@ -2009,14 +2009,14 @@ ez5.CoinLib = function() {
 	  {
 		"Light":
 		{
-		  "Background": [0, 0, 0],
+		  "Background": [33, 33, 33],
 		  "Button": [255, 87, 36],
 		  "TooltipText": [255, 255, 255],
 		  "ScaleGrid": [0, 74, 149]
 		},
 		"Dark":
 		{
-		  "Background": [0, 0, 0],
+		  "Background": [33, 33, 33],
 		  "Button": [255, 87, 36],
 		  "TooltipText": [255, 255, 255],
 		  "ScaleGrid": [0, 74, 149]
@@ -2632,7 +2632,7 @@ ez5.CoinLib = function() {
 	  //Set theme:
 	  let setTheme = function(theme)
 	  {
-		let colorBackground = theme == "dark"? [32, 32, 32]: [255, 255, 255];     //Default RGB-Settings
+		let colorBackground = theme == "dark"? [33, 33, 33]: [255, 255, 255];     //Default RGB-Settings
 		let colorButton = theme == "dark"? [255, 87, 36]: [255, 87, 36]; // rgb(255 87 36)
 		let colorTooltipText = theme == "dark"? [187, 187, 187]: [2, 2, 2];
 		let colorScaleGrid = [0, 74, 149];
