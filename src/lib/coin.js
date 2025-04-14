@@ -2621,10 +2621,7 @@ ez5.CoinLib = function() {
 			}
 			/* -- */
 		tooltip.style.visibility='hidden';
-		//Position the input element of the color on top left of the canvas:
-		let canvasRect = document.getElementById("CANVAS_DIG_OBJ").getBoundingClientRect();
-		let inputRGB = document.getElementById("INPUT_DIG_OBJ_COLOR");
-		inputRGB.style = "position:absolute;left: " + (canvasRect.left) + "px; top:" + (canvasRect.top) + "px";    
+		
 		resetTransformation();
 	  }
 	  //Set theme:
