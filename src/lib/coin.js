@@ -2454,8 +2454,6 @@ ez5.CoinLib = function() {
 		  let toolTipText = visWidget.iconRenderer.getIconToolTipText(hitIconID);
 		  if(nIcons > 0 && toolTipText.length > 0 && ev.pointerType && ev.pointerType == "mouse")
 		  {
-			const canvasRect = visWidget.glContext.canvas.getBoundingClientRect();
-			console.log('canvasRect:', canvasRect)
 			tooltip.textContent = toolTipText;
 			tooltip.style.visibility = 'visible';
 			const iconWidth = visWidget.iconRenderer.iconScale * (visWidget.iconRenderer.icons[0].w + embeddedSettings["IconButtonGap"]);
