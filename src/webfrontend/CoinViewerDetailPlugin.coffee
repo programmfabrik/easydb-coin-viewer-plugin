@@ -95,7 +95,7 @@ class ez5.CoinViewerDetailPlugin extends DetailSidebarPlugin
 
 		@__buttonBarInteraction = new CUI.Buttonbar
 			class: "ez5-coin-viewer-interaction-buttonbar"			
-			buttons: @__getInteractionButtons()
+			buttons: @__getInteractionButtons() # all buttons are intially hidden and will be "activated" in coin.js
 
 		return
 

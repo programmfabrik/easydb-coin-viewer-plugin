@@ -2751,10 +2751,12 @@ ez5.CoinLib = function() {
 		coinData = newCoinData
 		loadDataset(null, null);
 		
+		// if we want to use the Fylr HTML buttons
 		if(ez5.CoinLib.useFylrButtons) {
 			const interactionButtonbarEl = document.querySelector('.ez5-coin-viewer-interaction-buttonbar');
 			
-			if (interactionButtonbarEl) {						
+			if (interactionButtonbarEl) {	
+				// for any available icons/actions we show the appropriate HTML button and add an event listener
 				ez5.CoinLib.icons.forEach(icon => {
 					const button = document.querySelector('.ez5-coin-viewer-button[data-action="'+ icon.id +'"]');
 	
@@ -2765,8 +2767,17 @@ ez5.CoinLib = function() {
 							const actionId = event.currentTarget.getAttribute('data-action');
 							onIconClick(actionId);
 
+							// todo: this is a special button, because it has a toggle mode, which we need to re-create with the HTML button
+							// it toogles the manipulation between "light and object position"
+							// you can deactivate the fylr buttons by setting "useFylrButtons = false" and then review how this button is supposed to work
 							if (actionId == "IconMoveObjectOrLight") {
-								// todo: activate button / show active icon...
+								// todo: toggle icon on the HTML Button (icon_inactive vs icon_active)
+							}
+
+							if (actionId == "IconRule") {
+								// todo: this is a toggle as well and we should make the button "active" once it has been clicked
+								// active = ruler grid is visible
+								// inactive = ruler grid is not visible
 							}
 						});
 					}
