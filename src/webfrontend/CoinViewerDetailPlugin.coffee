@@ -2,6 +2,19 @@ class ez5.CoinViewerDetailPlugin extends DetailSidebarPlugin
 
 	@JSON_EXTENSION = "json"
 
+	constructor: (opts) ->
+		if not opts
+			# - the frontend uses some weird whacky registration phase for plugins
+			# - in this phase no opts are passed but DetailSidebarPlugin expects them
+			# - this is generally caught in shared/CUIExtensions/Plugin.coffee,
+			#   but fails when a plugin implements its own constructor with arguments 🥲
+			return
+
+		super(opts)
+		if ez5.version("6")
+			@__fylrButtonBar = new CUI.Buttonbar
+				class: "ez5-coin-viewer-interaction-buttonbar"
+
 	getButtonLocaKey: ->
 		"coin.viewer.main.button"
 
@@ -72,7 +85,7 @@ class ez5.CoinViewerDetailPlugin extends DetailSidebarPlugin
 
 			pane = new CUI.SimplePane
 				class: "ez5-coin-viewer-pane"
-				content: [@__buttonBar, @__mainDiv, @__buttonBarInteraction]
+				content: [@__buttonBar, @__mainDiv, @__fylrButtonBar]
 			@_detailSidebar.mainPane.replace(pane, @getPane())
 			@__openCoinViewer(validJsonFilesFound)
 			waitBlock.hide()
@@ -91,57 +104,13 @@ class ez5.CoinViewerDetailPlugin extends DetailSidebarPlugin
 
 		@__buttonBar = new CUI.Buttonbar
 			class: "ez5-coin-viewer-buttonbar"
-			buttons: [fullscreenButton]		
-
-		@__buttonBarInteraction = new CUI.Buttonbar
-			class: "ez5-coin-viewer-interaction-buttonbar"			
-			buttons: @__getInteractionButtons() # all buttons are intially hidden and will be "activated" in coin.js
+			buttons: [fullscreenButton]
 
 		return
 
-	__getInteractionButtons: ->	
-		iconLookupTable = { 
-			IconResetView: "fa-undo",
-			IconZoomOut: "fa-search-minus",
-			IconZoomIn: "fa-search-plus",
-			IconRotateLeft: "fa-rotate-left",
-			IconRotateRight: "fa-rotate-right",
-			IconMoveObjectOrLight: ["fa-sun-o", "fa-arrows"],
-			IconSelectColor: "fa-tint",
-			IconRule: "ruler",
-			IconFlip: "fa-exchange"
-		}
-
-		tooltipLookupTable = { 
-			IconResetView: "Reset view, light direction an object color.",
-			IconZoomOut: "Zoom out.",
-			IconZoomIn: "Zoom in.",
-			IconRotateLeft: "Counter-clockwise object rotation.",
-			IconRotateRight: "Clockwise object rotation.",
-			IconMoveObjectOrLight: "Toggle manipulation of light or object position.",
-			IconSelectColor: "Choose custom color for the object.",
-			IconRule: "Toggle visualization of scale.",
-			IconFlip: "Show other object side."
-		}		
-
-		buttons = []
-
-		for k, v of iconLookupTable
-			button = new CUI.Button
-				class: "ez5-coin-viewer-button"
-				icon_inactive: if CUI.util.isArray(v) then v[0] else v
-				icon_active: if CUI.util.isArray(v) then v[1] else v
-				hidden: true
-				tooltip: text: tooltipLookupTable[k]
-			CUI.dom.setAttribute(button, "data-action", k)
-			buttons.push(button)
-
-		return buttons
-
 	__openCoinViewer: (jsonFiles) ->
 		coinData = jsonFiles[0] # For now we use the first one found.
-		useFylrButtons = true # if set to true it will override the default webGL buttons with Fylr styled HTML buttons
-		ez5.CoinLib.init(@__mainDiv, useFylrButtons)
+		ez5.CoinLib.init(@__mainDiv, @__fylrButtonBar)
 		ez5.CoinLib.show(coinData)
 		return
 
