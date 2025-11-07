@@ -39,10 +39,17 @@
 
   .cui-buttonbar {
     .cui-button {
+      --gray-900: 17 24 39; // convert to rgb
+
       --btn-color: white;
+      --btn-background: rgb(var(--gray-900) / 0.25);
       --btn-border-color: white;
+      // Hover
       --btn-color-hover: rgb(255 255 255 / 0.65);
-      --btn-background-hover: transparent;
+      --btn-background-hover: rgb(var(--gray-900) / 0.5);
+      // Active
+      --btn-background-active: var(--white);
+      --btn-color-active: var(--gray-900);
   
       &:not(.cui-disabled) {
         &:hover {
