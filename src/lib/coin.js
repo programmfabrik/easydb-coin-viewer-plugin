@@ -2461,27 +2461,21 @@ ez5.CoinLib = function () {
 			const buttonDefinitions = {
 				"IconResetView": {
 					icon: "fa-refresh",
-					tooltip: `Reset view, light direction and object color.`,
 				},
 				"IconZoomOut": {
 					icon: "fa-search-minus",
-					tooltip: `Zoom out.`,
 				},
 				"IconZoomIn": {
 					icon: "fa-search-plus",
-					tooltip: `Zoom in.`,
 				},
 				"IconRotateLeft": {
 					icon: "fa-rotate-left",
-					tooltip: `Counter-clockwise object rotation.`,
 				},
 				"IconRotateRight": {
 					icon: "fa-rotate-right",
-					tooltip: `Clockwise object rotation.`,
 				},
 				"IconMoveObjectOrLight": {
 					icon: "fa-sun-o",
-					tooltip: `Toggle manipulation of light or object position.`,
 					onClick(button) {
 						if (moveLightOnLeftMouse) {
 							button.setIcon(this.icon);
@@ -2492,11 +2486,9 @@ ez5.CoinLib = function () {
 				},
 				"IconSelectColor": {
 					icon: "fa-tint",
-					tooltip: `Choose custom color for the object.`,
 				},
 				"IconRule": {
 					icon: "ruler",
-					tooltip: `Choose custom color for the object.`,
 					onClick(button) {
 						// clicking the button quickly again before the animation is finished seems to always result in not showing the grid
 						// i.e. it doesn't matter if the grid is already visible
@@ -2510,7 +2502,6 @@ ez5.CoinLib = function () {
 				},
 				"IconFlip": {
 					icon: "fa-exchange",
-					tooltip: `Show other object side.`,
 				},
 			}
 
@@ -2520,7 +2511,7 @@ ez5.CoinLib = function () {
 				const button = new CUI.Button({
 					class: "ez5-coin-viewer-button",
 					icon: def.icon,
-					tooltip: { text: def.tooltip },
+					tooltip: { text: $$(`coin.viewer.tooltip.${id}`) },
 					onClick: () => {
 						onIconClick(id);
 						def.onClick?.(button);
