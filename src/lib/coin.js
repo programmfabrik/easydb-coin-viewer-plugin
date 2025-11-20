@@ -432,7 +432,7 @@ ez5.CoinLib = function () {
 
 	//Function returns code for html:
 	HtmlGenerator.prototype.computeHtmlCode = function () {
-		let code = '<div id="DIV_DIG_OBJ_ICON_TOOLTIP" class="Div-Dig-Obj-Icon-Tooltip"></div><canvas id="CANVAS_DIG_OBJ" class="Canvas-Dig-Obj"></canvas><input id="INPUT_DIG_OBJ_COLOR" type="color" class="Input-Dig-Obj-Color" disabled>\n';
+		let code = '<canvas id="CANVAS_DIG_OBJ" class="Canvas-Dig-Obj"></canvas><input id="INPUT_DIG_OBJ_COLOR" type="color" class="Input-Dig-Obj-Color" disabled>\n';
 		return code;
 	}
 	let iconDataResetView = "iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAKJSURBVHgB7ZvtcdswDEBfe/1fbxBsUG8QbdBuYG/QbGBv4G7gbOAR7A2cTmB3gqYTqMIpvro5g5RlSYYovTtcEugTAEFSJAIjIyMj92XGwMkL2RQiDJT8TJYMkPydHBhYa8gNWZIQUsi8kFUhe8oo/8Y2/rw1ZPSUCWUU1Yj8RlnTo7TICtlyu9GXWsOMhvlEcwhlE/9Ge/zBKU9Uy+m6oo6d4JQftGf4oZBHnKIR0R69qjFbykh+LeSBfxG1zl/gOOpVjde0UEMeAve65KgpzqlifNUInjvrOz0glvMHrovgKepCD5hDdMJybd72IuqKEJ7VrUkcNdAyfkPiCOGcdztcNUUo+kLiCOGhLnl09mY1fWEAWD1/8r2+IiSe+x8jxzND/1LIkQSIOeCLod+RCDEHWHP6HYkQc4AY+l8MBKsDTGbm9yFyPK95XW9oclXYA1cHLNYHvBp6jylQ653qOuAz/hBDfyRAXQd4XLQUQ38kQMwBO0Of4Y9HQ/8SuijmgJ+G3mMLyAx90AExBHsu8IAfhBY/2qzP4QV+0E9za83iZhbYuz4ehkPBDtKKBpjge0lsSQdrFtvAQ+7ZIQod7VNk+FsWnxDeqBEaZkNH3vb6PkK4CqRLJzwTbpFCSzwFHqyiUWkzHfTez5F3mNEyq8gLtBWBKfGSu0aGvSpUKZBY0owjTvWGseft6ZCqJTIasTX1HCGUhlepPttzh5Ho2iIpPfdURzjl/xfW3+XtmJ6zvfK+d52RxvqENqWznI8xp5ma4KrisqBKCNcRNCXu/7tEaMcRWxxXjV5CKHP0QH2j9doFLXZyXW1wCOUHlW62Tt/+lrPjr2eyo1zG0p+D2YIbGRkZuQt/ARrBWHjSYQHGAAAAAElFTkSuQmCC";
@@ -2260,25 +2260,17 @@ ez5.CoinLib = function () {
 		const handleTouchMoveFunction = function (ev, relativeTouchPos, movement)  //relativeTouchPos: origin is bottom left
 		{
 			let rect = ev.target.getBoundingClientRect();
-			let tooltip = document.getElementById("DIV_DIG_OBJ_ICON_TOOLTIP");
 			let hitIconID = visWidget.iconRenderer.hitIcon(ev.clientX - rect.left, rect.bottom - ev.clientY, false);
 			if (hitIconID.length > 0) {
 				let nIcons = visWidget.iconRenderer.icons ? visWidget.iconRenderer.icons.length : 0;
 				let toolTipText = visWidget.iconRenderer.getIconToolTipText(hitIconID);
 				if (nIcons > 0 && toolTipText.length > 0 && ev.pointerType && ev.pointerType == "mouse") {
-					tooltip.textContent = toolTipText;
-					tooltip.style.visibility = 'visible';
 					const iconWidth = visWidget.iconRenderer.iconScale * (visWidget.iconRenderer.icons[0].w + embeddedSettings["IconButtonGap"]);
 					x = (nIcons * iconWidth) + embeddedSettings["IconButtonGap"];
-					tooltip.style.left = "" + x + "px";
-					tooltip.style.width = "" + (visWidget.glContext.canvas.width - (x + 10) - 30) + "px"; //adapt width to enable clipping inside canvas
 				}
-				else
-					tooltip.style.visibility = 'hidden';
 				enableCursorStyle("pointer");
 			}
 			else {
-				tooltip.style.visibility = 'hidden';
 				enableCursorStyle("grab");
 			}
 			if (interactionMode == 1)  //set new light direction
@@ -2402,17 +2394,6 @@ ez5.CoinLib = function () {
 		animation = new Animation();
 		enableAnimation();
 		visWidget.callbackResize = function () {
-			//Position the tooltip:
-			let tooltip = document.getElementById("DIV_DIG_OBJ_ICON_TOOLTIP");
-			/* Code added by programmfabrik */
-			if (!tooltip) {
-				// When the tooltip element is no longer in the DOM, it means that it was removed, so we remove the resize event listener
-				mainContainer.removeEventListener("resize", resizeFunction);
-				return;
-			}
-			/* -- */
-			tooltip.style.visibility = 'hidden';
-
 			resetTransformation();
 		}
 		//Set theme:
@@ -2434,7 +2415,6 @@ ez5.CoinLib = function () {
 			}
 			visWidget.backgroundColor = [(1.0 / 255.0) * colorBackground[0], (1.0 / 255.0) * colorBackground[1], (1.0 / 255.0) * colorBackground[2], 1.0];
 			visWidget.iconRenderer.updateTheme(colorButton);
-			document.getElementById("DIV_DIG_OBJ_ICON_TOOLTIP").style = "color:#" + decimalToHexString(colorTooltipText[0]) + decimalToHexString(colorTooltipText[1]) + decimalToHexString(colorTooltipText[2]);
 			visWidget.gridRenderer.scaleGridColor = [(1.0 / 255.0) * colorScaleGrid[0], (1.0 / 255.0) * colorScaleGrid[1], (1.0 / 255.0) * colorScaleGrid[2], 1.0];
 		}
 		if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches)  //dark mode enabled in browser
