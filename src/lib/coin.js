@@ -407,25 +407,6 @@ ez5.CoinLib = function () {
 		{\n\
 		  opacity:0.0;\n\
 		  position:relative;\n\
-		}\n\
-		.Div-Dig-Obj-Icon-Tooltip\n\
-		{\n\
-		  padding: 4px;\n\
-		  border: 0px solid rgba(0,0,0,.8);\n\
-		  border-radius: 2px;\n\
-		  background-color: rgba(190,190,190,.0);\n\
-		  color: #ffffff;\n\
-		  font-size:12px;\n\
-		  font-weight: normal;\
-		  position: absolute;\n\
-		  z-index: 2;\n\
-		  text-align: left;\n\
-		  width: 500px;\n\
-		  white-space: nowrap;\n\
-		  text-overflow: clip;\n\
-		  display: block;\n\
-		  overflow: hidden;\n\
-		  visibility: hidden;\n\
 		}\n';
 		return code;
 	}
@@ -634,32 +615,6 @@ ez5.CoinLib = function () {
 			this.texture.updatePartialTexture(xoffset, yoffset, this.icons[n].imageActive);
 			xoffset += this.icons[0].w;
 			this.texture.updatePartialTexture(xoffset, yoffset, this.icons[n].imageInactive);
-		}
-	}
-
-	//Function returns tooltip text of a specific icon (empty string if iconID is invalid):
-	IconRenderer.prototype.getIconToolTipText = function (iconID) {
-		if (iconID == "IconFlip")
-			return "Show other object side.";
-		else if (iconID == "IconMoveObjectOrLight")
-			return "Toggle manipulation of light or object position.";
-		else if (iconID == "IconResetView")
-			return "Reset view, light direction an object color.";
-		else if (iconID == "IconRule")
-			return "Toggle visualization of scale.";
-		else if (iconID == "IconZoomIn")
-			return "Zoom in.";
-		else if (iconID == "IconZoomOut")
-			return "Zoom out.";
-		else if (iconID == "IconRotateLeft")
-			return "Counter-clockwise object rotation.";
-		else if (iconID == "IconRotateRight")
-			return "Clockwise object rotation.";
-		else if (iconID == "IconSelectColor")
-			return "Choose custom color for the object.";
-		else {
-			console.log("IconRenderer::getIconToolTipText(..): Tooltip text for '" + iconID + "' is not avail!");
-			return "";
 		}
 	}
 
@@ -1878,14 +1833,12 @@ ez5.CoinLib = function () {
 			{
 				"Background": [33, 33, 33],
 				"Button": [255, 87, 36],
-				"TooltipText": [255, 255, 255],
 				"ScaleGrid": [0, 74, 149]
 			},
 			"Dark":
 			{
 				"Background": [33, 33, 33],
 				"Button": [255, 87, 36],
-				"TooltipText": [255, 255, 255],
 				"ScaleGrid": [0, 74, 149]
 			}
 		},
@@ -2262,12 +2215,6 @@ ez5.CoinLib = function () {
 			let rect = ev.target.getBoundingClientRect();
 			let hitIconID = visWidget.iconRenderer.hitIcon(ev.clientX - rect.left, rect.bottom - ev.clientY, false);
 			if (hitIconID.length > 0) {
-				let nIcons = visWidget.iconRenderer.icons ? visWidget.iconRenderer.icons.length : 0;
-				let toolTipText = visWidget.iconRenderer.getIconToolTipText(hitIconID);
-				if (nIcons > 0 && toolTipText.length > 0 && ev.pointerType && ev.pointerType == "mouse") {
-					const iconWidth = visWidget.iconRenderer.iconScale * (visWidget.iconRenderer.icons[0].w + embeddedSettings["IconButtonGap"]);
-					x = (nIcons * iconWidth) + embeddedSettings["IconButtonGap"];
-				}
 				enableCursorStyle("pointer");
 			}
 			else {
@@ -2400,18 +2347,12 @@ ez5.CoinLib = function () {
 		let setTheme = function (theme) {
 			let colorBackground = theme == "dark" ? [33, 33, 33] : [255, 255, 255];     //Default RGB-Settings
 			let colorButton = theme == "dark" ? [255, 87, 36] : [255, 87, 36]; // rgb(255 87 36)
-			let colorTooltipText = theme == "dark" ? [187, 187, 187] : [2, 2, 2];
 			let colorScaleGrid = [0, 74, 149];
 			if (typeof embeddedSettings !== "undefined") {
 				const themeColors = theme == "dark" ? embeddedSettings["Colors"]["Dark"] : embeddedSettings["Colors"]["Light"];
 				colorBackground = themeColors["Background"];
 				colorButton = themeColors["Button"];
-				colorTooltipText = themeColors["TooltipText"];
 				colorScaleGrid = themeColors["ScaleGrid"];
-			}
-			function decimalToHexString(decNumber) {
-				let result = decNumber.toString(16).toUpperCase();
-				return result.length == 1 ? "0" + result : result;
 			}
 			visWidget.backgroundColor = [(1.0 / 255.0) * colorBackground[0], (1.0 / 255.0) * colorBackground[1], (1.0 / 255.0) * colorBackground[2], 1.0];
 			visWidget.iconRenderer.updateTheme(colorButton);
