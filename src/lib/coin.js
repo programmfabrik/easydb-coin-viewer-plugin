@@ -2016,7 +2016,6 @@ ez5.CoinLib = function () {
 				let newCoinSide = currentCoinSide == 0 && coinData["processData"]["coinSide1"] ? 1 : 0;
 				if (newCoinSide != currentCoinSide) {
 					currentCoinSide = newCoinSide;
-					moveLightOnLeftMouse = 1;
 					loadOtherSide = true;
 					animation.lightRotationEnabled = false;
 					animation.enableViewAlteration(visWidget.transformation, computeDefaultTransformation(),
