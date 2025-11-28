@@ -2475,7 +2475,7 @@ ez5.CoinLib = function () {
 					icon: "fa-rotate-right",
 				},
 				"IconMoveObjectOrLight": {
-					icon: "fa-sun-o",
+					icon: "fa-lightbulb-o",
 					onClick(button) {
 						if (moveLightOnLeftMouse) {
 							button.setIcon(this.icon);
