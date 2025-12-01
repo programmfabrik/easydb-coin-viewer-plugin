@@ -1,11 +1,63 @@
 .ez5-coin-viewer-container {
+  background-color: #212121; // $card-asset-background
+  position: relative;
   display: flex;
   height: 100%;
+
+  // Color Input
+  .Input-Dig-Obj-Color {
+    position: absolute;
+    top: 0;
+    left: 0.75rem;
+    line-height: 0;
+    height: 0;
+
+    &[disabled] {
+      opacity: 0;
+      width: 0;
+      height: 0;
+      min-width: 0;
+      visibility: hidden;
+      padding: 0;
+      margin: 0;
+      line-height: 0;
+    }
+  }
 }
 
 .ez5-coin-viewer-pane {
   .cui-vertical-layout-center {
+    padding: 0;
     overflow: hidden!important;
+  }
+
+  .cui-buttonbar {
+    .cui-button {
+      --gray-900: 17 24 39; // convert to rgb
+
+      --btn-color: white;
+      --btn-background: rgb(var(--gray-900) / 0.25);
+      --btn-border-color: white;
+      // Hover
+      --btn-color-hover: rgb(255 255 255 / 0.65);
+      --btn-background-hover: rgb(var(--gray-900) / 0.5);
+      // Active
+      --btn-background-active: var(--white);
+      --btn-color-active: var(--gray-900);
+
+      &:not(.cui-disabled) {
+        &:hover {
+          --btn-border-color: rgb(255 255 255 / 0.65);
+        }
+      }
+      .cui-button-visual {
+        height: 24px;
+        min-width: 25.62px;
+        font-size: 0.75rem;
+        line-height: 24px;
+        border-radius: 2px;
+      }
+    }
   }
 }
 
@@ -14,10 +66,44 @@
   width: 100%;
   z-index: 1000;
   display: block;
-  margin-top: 10px;
+  margin-top: 0.5rem;
 
   .cui-button {
     position: absolute;
-    right: 10px;
+    right: 0.5rem;
   }
+}
+
+.ez5-coin-viewer-interaction-buttonbar {
+  position: absolute;
+  bottom: 0.5rem;
+  left: 0.5rem;
+}
+
+// Sidebar Toolbar Button
+.ez5-button-plugin-coin-viewer-pref {
+	.fa-circle-thin {
+		position: relative;
+		border: 1px solid currentcolor;
+		width: 16px;
+		height: 16px;
+		border-radius: 25px;
+
+		&::before,
+		&::after {
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+		}
+
+		&::after {
+			content: '';
+			display: block;
+			width: 2px;
+			height: 5px;
+			background-color: currentcolor;
+			border-radius: 2px;
+		}
+	}
 }

@@ -2,6 +2,19 @@ class ez5.CoinViewerDetailPlugin extends DetailSidebarPlugin
 
 	@JSON_EXTENSION = "json"
 
+	constructor: (opts) ->
+		if not opts
+			# - the frontend uses some weird whacky registration phase for plugins
+			# - in this phase no opts are passed but DetailSidebarPlugin expects them
+			# - this is generally caught in shared/CUIExtensions/Plugin.coffee,
+			#   but fails when a plugin implements its own constructor with arguments 🥲
+			return
+
+		super(opts)
+		if ez5.version("6")
+			@__fylrButtonBar = new CUI.Buttonbar
+				class: "ez5-coin-viewer-interaction-buttonbar"
+
 	getButtonLocaKey: ->
 		"coin.viewer.main.button"
 
@@ -72,7 +85,7 @@ class ez5.CoinViewerDetailPlugin extends DetailSidebarPlugin
 
 			pane = new CUI.SimplePane
 				class: "ez5-coin-viewer-pane"
-				content: [@__buttonBar, @__mainDiv]
+				content: [@__buttonBar, @__mainDiv, @__fylrButtonBar]
 			@_detailSidebar.mainPane.replace(pane, @getPane())
 			@__openCoinViewer(validJsonFilesFound)
 			waitBlock.hide()
@@ -97,7 +110,7 @@ class ez5.CoinViewerDetailPlugin extends DetailSidebarPlugin
 
 	__openCoinViewer: (jsonFiles) ->
 		coinData = jsonFiles[0] # For now we use the first one found.
-		ez5.CoinLib.init(@__mainDiv)
+		ez5.CoinLib.init(@__mainDiv, @__fylrButtonBar)
 		ez5.CoinLib.show(coinData)
 		return
 

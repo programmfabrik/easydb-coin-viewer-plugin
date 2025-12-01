@@ -1,8 +1,17 @@
-key,de-DE,en-US,it-IT,es-ES
-coin.viewer.main.button|tooltip,Open coin viewer,Open coin viewer,Open coin viewer,Open coin viewer
-coin.viewer.main.button|icon,fa-superpowers,fa-superpowers,fa-superpowers,fa-superpowers
-coin.viewer.main.error.json_wrong_data|text,The provided JSON file does not have the expected format.,The provided JSON file does not have the expected format.,The provided JSON file does not have the expected format.,The provided JSON file does not have the expected format.
-coin.viewer.main.error.json_wrong_data|icon,fa-warning,fa-warning,fa-warning,fa-warning
-coin.viewer.buttonbar.fullscreen.button.open|icon,fa-arrows-alt,fa-arrows-alt,fa-arrows-alt,fa-arrows-alt
-coin.viewer.buttonbar.fullscreen.button.close|icon,fa-compress,fa-compress,fa-compress,fa-compress
-coin.viewer.buttonbar.fullscreen.button|tooltip,Vollbildschirm öffnen/schließen,Open/Close fullscreen,,
+key,de-DE,R,en-US,R,da-DK,R,fi-FI,R,sv-SE,R,fr-FR,R,it-IT,R,es-ES,R
+coin.viewer.buttonbar.fullscreen.button.close|icon,fa-compress,FALSE,fa-compress,FALSE,fa-compress,FALSE,fa-compress,FALSE,fa-compress,FALSE,fa-compress,FALSE,fa-compress,FALSE,fa-compress,FALSE
+coin.viewer.buttonbar.fullscreen.button.open|icon,fa-expand,FALSE,fa-expand,FALSE,fa-expand,FALSE,fa-expand,FALSE,fa-expand,FALSE,fa-expand,FALSE,fa-expand,FALSE,fa-expand,FALSE
+coin.viewer.buttonbar.fullscreen.button|tooltip,Vollbildschirm öffnen/schließen,FALSE,Open/Close fullscreen,FALSE,Åbn/luk fuldskærmsvisning,FALSE,Avaa / sulje koko ruudun näkymä,FALSE,Öppna/stäng helskärm,FALSE,Ouvrir / Fermer le mode plein écran,FALSE,,FALSE,,FALSE
+coin.viewer.main.button|icon,fa-circle-thin,FALSE,fa-circle-thin,FALSE,fa-circle-thin,FALSE,fa-circle-thin,FALSE,fa-circle-thin,FALSE,fa-circle-thin,FALSE,fa-circle-thin,FALSE,fa-circle-thin,FALSE
+coin.viewer.main.button|tooltip,Coin Viewer öffnen,TRUE,Open coin viewer,FALSE,Åbn coin viser,FALSE,Avaa coin viewer,FALSE,Öppna coin viewer,FALSE,Ouvrir la visionneuse d'éléments,FALSE,Open coin viewer,FALSE,Open coin viewer,FALSE
+coin.viewer.main.error.json_wrong_data|icon,fa-warning,FALSE,fa-warning,FALSE,fa-warning,FALSE,fa-warning,FALSE,fa-warning,FALSE,fa-warning,FALSE,fa-warning,FALSE,fa-warning,FALSE
+coin.viewer.main.error.json_wrong_data|text,The provided JSON file does not have the expected format.,FALSE,The provided JSON file does not have the expected format.,FALSE,Den leverede JSON-fil har ikke det forventede format.,FALSE,Annetulla JSON-tiedostolla ei ole odotettua muotoa.,FALSE,Den givna JSON-filen har inte det förväntade formatet.,FALSE,Le fichier JSON fourni n'a pas le format attendu.,FALSE,The provided JSON file does not have the expected format.,FALSE,The provided JSON file does not have the expected format.,FALSE
+coin.viewer.tooltip.IconResetView,"Licht, Farbe und Position zurücksetzen.",TRUE,"Reset view, light direction, color and position.",TRUE,,FALSE,,FALSE,,FALSE,,FALSE,,FALSE,,FALSE
+coin.viewer.tooltip.IconZoomOut,Verkleinern.,TRUE,Zoom out.,TRUE,,FALSE,,FALSE,,FALSE,,FALSE,,FALSE,,FALSE
+coin.viewer.tooltip.IconZoomIn,Vergrößern.,TRUE,Zoom in.,TRUE,,FALSE,,FALSE,,FALSE,,FALSE,,FALSE,,FALSE
+coin.viewer.tooltip.IconRotateLeft,Gegen den Uhrzeigersinn drehen.,TRUE,Rotate counter-clockwise.,TRUE,,FALSE,,FALSE,,FALSE,,FALSE,,FALSE,,FALSE
+coin.viewer.tooltip.IconRotateRight,Im Uhrzeigersinn drehen.,TRUE,Rotate clockwise.,TRUE,,FALSE,,FALSE,,FALSE,,FALSE,,FALSE,,FALSE
+coin.viewer.tooltip.IconMoveObjectOrLight,Lichteinstrahlung oder Position verändern.,TRUE,Toggle manipulation of light direction or object position.,TRUE,,FALSE,,FALSE,,FALSE,,FALSE,,FALSE,,FALSE
+coin.viewer.tooltip.IconSelectColor,Farbe ändern.,TRUE,Choose custom color for the object.,TRUE,,FALSE,,FALSE,,FALSE,,FALSE,,FALSE,,FALSE
+coin.viewer.tooltip.IconRule,Gitterlinien ein- oder ausblenden.,TRUE,Toggle grid.,TRUE,,FALSE,,FALSE,,FALSE,,FALSE,,FALSE,,FALSE
+coin.viewer.tooltip.IconFlip,Objekt umdrehen.,TRUE,Show other object side.,TRUE,,FALSE,,FALSE,,FALSE,,FALSE,,FALSE,,FALSE
