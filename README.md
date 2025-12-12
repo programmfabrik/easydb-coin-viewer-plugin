@@ -21,10 +21,10 @@ A Detail Sidebar Plugin for **easydb5** and **fylr** that provides an interactiv
 
 1. **Via URL (recommended):**
     - Use the following URL to install the plugin and **receive automatic updates** in your instance:
-      [https://programmfabrik.github.io/easydb-coin-viewer-plugin/easydb-coin-viewer-plugin.zip](https://programmfabrik.github.io/easydb-coin-viewer-plugin/easydb-coin-viewer-plugin.zip)
+      [https://programmfabrik.github.io/easydb-coin-viewer-plugin/easydb-coin-viewer-plugin-c7f3a9e2d1b8-latest.zip](https://programmfabrik.github.io/easydb-coin-viewer-plugin/easydb-coin-viewer-plugin-c7f3a9e2d1b8-latest.zip)
 
 2. **Via ZIP:**
-    - Download the latest version from [this link](https://programmfabrik.github.io/easydb-coin-viewer-plugin/easydb-coin-viewer-plugin.zip).
+    - Download the latest version from [this link](https://programmfabrik.github.io/easydb-coin-viewer-plugin/easydb-coin-viewer-plugin-c7f3a9e2d1b8-latest.zip).
     - Use the Plugin Manager in Fylr to install the downloaded plugin package. Plugins installed via ZIP don't get updated automatically.
 
 ## JSON Data Format
