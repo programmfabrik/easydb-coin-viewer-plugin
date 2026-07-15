@@ -1,5 +1,24 @@
 plugin:
   name: easydb-coin-viewer-plugin
+  info:
+    de-DE: |
+      Ergänzt einen interaktiven, WebGL-basierten 3D-Münzbetrachter in der Detail-Seitenleiste von fylr und easydb5. Er öffnet die an einem Datensatz hinterlegten Münzdaten, sodass sich Oberflächendetails unter einstellbarer Beleuchtung untersuchen lassen.
+
+      - Echtzeit-3D-Darstellung mit Normal-Maps für realistisches Oberflächenrelief
+      - Lichtrichtung und -intensität einstellbar, um feine Details sichtbar zu machen
+      - Zoomen, Drehen und Umschalten zwischen Vorder- und Rückseite
+      - Eigene Oberflächenfarbe, Messraster-Overlay und Vollbildmodus
+
+      Die Münzbilder werden aus einer am Datensatz hinterlegten JSON-Datei im erwarteten Format gelesen.
+    en-US: |
+      Adds an interactive WebGL-based 3D coin viewer to the detail sidebar of fylr and easydb5. It opens coin data attached to a record so you can inspect surface detail under adjustable lighting.
+
+      - Real-time 3D rendering with normal maps for realistic surface relief
+      - Adjust light direction and intensity to reveal fine detail
+      - Zoom, rotate and flip between the two sides of a coin
+      - Custom surface color, a measurement grid overlay and a fullscreen mode
+
+      Coin images are read from a JSON file attached to the record in the expected format.
   url: https://github.com/programmfabrik/easydb-coin-viewer-plugin
   version: 2.0
   server:
